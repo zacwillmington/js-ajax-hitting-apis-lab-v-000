@@ -1,26 +1,27 @@
 // your code here
 
 function showRepos() {
-    let repoList = document.createElement('ul');
     let repos = JSON.parse(this.responseText);
-    console.log(repos)
-
-    for(let i = 0; i < repos.length; i++){
-        let li = `<li>${repos[i].name} +  '- <a href="#" data-repo="' +
-        r.name + 'onclick="getCommits(${repos[i].name})">Get Commits</a></li></li>'`
-
-        repoList.appendChild(li);
-
-    }
+    const repoList = `<ul>${repos.map(r => '<li>' +
+        r.name + ' - <a href="#" data-repo="' +
+        r.name + '" onclick="getCommits(this)">Get Commits</a></li>').join('')}</ul>`;
+    document.getElementById('repositories').innerHTML = repoList;
 
 }
 
 function getRepositories() {
-    console.log("stribg")
     let userName = document.getElementById('username').value;
-    debugger;
+
     const req = new XMLHttpRequest();
     req.addEventListener('load', showRepos);
     req.open('GET', `https://api.github.com/users/${userName}/repos`);
     req.send();
+}
+
+function displayCommits() {
+
+}
+
+function getCommits(){
+
 }
