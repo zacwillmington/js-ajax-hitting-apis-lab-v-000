@@ -41,8 +41,8 @@ function getCommits(element){
 }
 
 function displayBranches() {
-    let braches = JSON.parse(this.responseText);
-
+    let branches = JSON.parse(this.responseText);
+    const branchesList = branches.map(branch => );
 
 }
 
