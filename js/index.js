@@ -51,6 +51,6 @@ function getBranches(element) {
     const name = element.dataset.repo
     const req = new XMLHttpRequest();
     req.addEventListener('load', displayBranches);
-    req.open('GET', '/repos/'+ this.username.value + '/' + 'Spoon-Knife' + '/branches');
+    req.open('GET', 'https://api.github.com/repos/'+ this.username.value + '/' + 'Spoon-Knife' + '/branches');
     req.send();
 }
