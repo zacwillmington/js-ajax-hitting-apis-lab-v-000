@@ -47,5 +47,8 @@ function getBranches(element) {
     req.send();
 }
 function displayBranches() {
+    let braches = JSON.parse(this.responseText);
+
+
 
 }
