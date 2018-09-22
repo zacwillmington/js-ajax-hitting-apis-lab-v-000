@@ -2,9 +2,9 @@
 
 function displayRepositories() {
     let repos = JSON.parse(this.responseText);
-    const repoList = `<ul>${repos.map(r => '<li>' +
-        r.name + ' - <a href="#" data-repo="' +
-        r.name + '" onclick="getCommits(this)">Display Commits</a></li>').join('')}</ul>`;
+    const repoList = `<ul>${repos.map(r => '<li>' + '/' +
+        r.name + '/' + r.owner.login +'/' + ' - <a href="#" data-repo="' +
+        r.name + '" onclick="getCommits(this)">' + r.html_url + '</a></li>').join('')}</ul>`;
     document.getElementById('repositories').innerHTML = repoList;
 
 }
@@ -24,7 +24,7 @@ function displayCommits() {
         '<li>' + '/' +
        commit.commit.author.name + '/' + commit.author.login
        + '/' + commit.commit.message +
-       + '/' + '/master/' + '<a href="${commit.url}">Repo</a>' + '</li>').join('')}</ul>`;
+       + '/' + '<a href="${commit.url}">/Master/</a>' + '/master/' + '</li>').join('')}</ul>`;
 
   document.getElementById('details').innerHTML = commitsList;
 
@@ -34,15 +34,23 @@ function displayCommits() {
 function getCommits(element){
     const name = element.dataset.repo
     const req = new XMLHttpRequest();
-    debugger;
+
     req.addEventListener('load', displayCommits);
-    req.open('GET', 'https://api.github.com/repos/' + this.username.value + '/' + name + '/commits');
+    req.open('GET', 'https://api.github.com/repos/' + this.username.value + '/' + 'Spoon-Knife' + '/commits');
     req.send();
 }
 
-function getBranches() {
+function displayBranches() {
+    let branches = JSON.parse(this.responseText);
+    const branchesList = `<ul>${branches.map(branch => '<li>'+ '/' + branch.name + '/' + '</li>')};</ul>`
+    document.getElementById('details').innerHTML = branchesList;
 
 }
-function displayBranches() {
 
+function getBranches(element) {
+    const name = element.dataset.repo
+    const req = new XMLHttpRequest();
+    req.addEventListener('load', displayBranches);
+    req.open('GET', 'https://api.github.com/repos/'+ this.username.value + '/' + 'Spoon-Knife' + '/branches');
+    req.send();
 }
