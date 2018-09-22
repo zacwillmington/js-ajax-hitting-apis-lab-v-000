@@ -24,7 +24,7 @@ function displayCommits() {
         '<li>' + '/' +
        commit.commit.author.name + '/' + commit.author.login
        + '/' + commit.commit.message +
-       + '/' + '/master/' + '<a href="${commit.url}">Repo</a>' + '</li>').join('')}</ul>`;
+       + '/' + '<a href="${commit.url}">/Master/</a>' + '</li>').join('')}</ul>`;
 
   document.getElementById('details').innerHTML = commitsList;
 
