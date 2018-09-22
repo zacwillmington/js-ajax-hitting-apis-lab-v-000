@@ -43,12 +43,12 @@ function getCommits(element){
 function getBranches(element) {
     const name = element.dataset.repo
     const req = new XMLHttpRequest();
+    req.addEventListener('load', displayBranches);
     req.open('GET', '/repos/'+ this.username.value + '/' + name + '/branches');
     req.send();
 }
 function displayBranches() {
     let braches = JSON.parse(this.responseText);
-
 
 
 }
