@@ -36,7 +36,7 @@ function getCommits(element){
     const req = new XMLHttpRequest();
     debugger;
     req.addEventListener('load', displayCommits);
-    req.open('GET', 'https://api.github.com/repos/' + this.username.value + '/' + name + '/commits');
+    req.open('GET', 'https://api.github.com/repos/' + this.username.value + '/' + 'Spoon-Knife' + '/commits');
     req.send();
 }
 
