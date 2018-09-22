@@ -34,14 +34,14 @@ function displayCommits() {
 function getCommits(element){
     const name = element.dataset.repo
     const req = new XMLHttpRequest();
-    debugger;
+    
     req.addEventListener('load', displayCommits);
     req.open('GET', 'https://api.github.com/repos/' + this.username.value + '/' + 'Spoon-Knife' + '/commits');
     req.send();
 }
 
 function getBranches() {
-
+    const req = new XMLHttpRequest();
 }
 function displayBranches() {
 
