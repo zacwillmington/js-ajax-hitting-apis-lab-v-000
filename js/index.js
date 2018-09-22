@@ -40,9 +40,10 @@ function getCommits(element){
     req.send();
 }
 
-function getBranches() {
+function getBranches(element) {
+    const name = element.dataset.repo
     const req = new XMLHttpRequest();
-    req.open('GET', '')
+    req.open('GET', '/repos//:repo/branches')
 }
 function displayBranches() {
 
